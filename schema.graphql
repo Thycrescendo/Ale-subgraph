@@ -1,8 +1,8 @@
 type Domain @entity {
-  id: ID!               # The namehash of the name
-  labelName: String     # The human readable label name (imported from CSV), if known
-  labelhash: Bytes      # keccak256(labelName)
-  parent: Domain        # The namehash (id) of the parent name
+  id: ID!                 # The namehash of the name
+  labelName: String       # The human-readable label name, if known
+  labelhash: Bytes        # keccak256(labelName)
+  parent: Domain          # The namehash (id) of the parent name
   subdomains: [Domain!]! @derivedFrom(field: "parent")  # Can count domains from length of array
   owner: Account!
   resolver: Resolver
@@ -76,14 +76,13 @@ type PubkeyChanged implements ResolverEvent @entity {
   y: Bytes!
 }
 
-# Currently not in use - follow this issue for status - https://github.com/graphprotocol/graph-node/issues/913
-#type TextChanged implements ResolverEvent @entity {
-#  id: ID!
-#  node: Bytes!
-#  resolverID: String!
-#  indexedKey: String!
-#  key: String!
-#}
+type TextChanged implements ResolverEvent @entity {
+  id: ID!
+  node: Bytes!
+  resolverID: Resolver!
+  indexedKey: String!
+  key: String!
+}
 
 type ContenthashChanged implements ResolverEvent @entity {
   id: ID!
