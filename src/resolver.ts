@@ -6,6 +6,7 @@ import {
   InterfaceChanged as InterfaceChangedEvent,
   NameChanged as NameChangedEvent,
   PubkeyChanged as PubkeyChangedEvent,
+  TextChanged as TextChangedEvent, // Uncomment if TextChanged is used
 } from './types/Resolver/Resolver'
 
 import {
@@ -16,6 +17,7 @@ import {
   ContenthashChanged,
   InterfaceChanged,
   AuthorisationChanged,
+  TextChanged, // Uncomment if TextChanged is used
 } from './types/schema'
 
 import { Bytes, BigInt, Address } from "@graphprotocol/graph-ts";
@@ -24,11 +26,9 @@ export function handleAddrChanged(event: AddrChangedEvent): void {
   let resolverEvent = new AddrChanged(createEventID(event.block.number, event.logIndex))
   resolverEvent.node = event.params.node
   resolverEvent.resolverID = createResolverID(event.params.node, event.address)
-  resolverEvent.node = event.params.node
   resolverEvent.a = event.params.a
   resolverEvent.save()
 }
-
 
 export function handleNameChanged(event: NameChangedEvent): void {
   let resolverEvent = new NameChanged(createEventID(event.block.number, event.logIndex))
@@ -55,15 +55,14 @@ export function handlePubkeyChanged(event: PubkeyChangedEvent): void {
   resolverEvent.save()
 }
 
-// Currently not in use - follow this issue for status - https://github.com/graphprotocol/graph-node/issues/913
-// export function handleTextChanged(event: TextChangedEvent): void {
-//   let resolverEvent = new TextChanged(createEventID(event.block.number, event.logIndex))
-//   resolverEvent.node = event.params.node
-//   resolverEvent.resolverID = createResolverID(event.params.node, event.address)
-//   resolverEvent.indexedKey = event.params.indexedKey
-//   resolverEvent.key = event.params.key
-//   resolverEvent.save()
-// }
+export function handleTextChanged(event: TextChangedEvent): void {
+  let resolverEvent = new TextChanged(createEventID(event.block.number, event.logIndex))
+  resolverEvent.node = event.params.node
+  resolverEvent.resolverID = createResolverID(event.params.node, event.address)
+  resolverEvent.indexedKey = event.params.indexedKey
+  resolverEvent.key = event.params.key
+  resolverEvent.save()
+}
 
 export function handleContentHashChanged(event: ContenthashChangedEvent): void {
   let resolverEvent = new ContenthashChanged(createEventID(event.block.number, event.logIndex))
