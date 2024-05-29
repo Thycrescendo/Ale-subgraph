@@ -2,11 +2,11 @@
 import {
   ByteArray,
   crypto,
-  ens,
+  ale,
 } from '@graphprotocol/graph-ts'
 
 // Import event types from the registry contract ABI
-import { NewOwner, Transfer, NewResolver, NewTTL } from './types/ENSRegistry/EnsRegistry'
+import { NewOwner, Transfer, NewResolver, NewTTL } from './types/ALERegistry/ALERegistry'
 
 // Import entity types generated from the GraphQL schema
 import { Account, Domain, Resolver } from './types/schema'
@@ -25,7 +25,7 @@ export function handleNewOwner(event: NewOwner): void {
   let domain = new Domain(subnode)
 
   // Get label and node names
-  let label = ens.nameByHash(event.params.label.toHexString())
+  let label = ale.nameByHash(event.params.label.toHexString())
   if (label != null) {
     domain.labelName = label
   }
