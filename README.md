@@ -1,4 +1,4 @@
-# ENS Subgraph
+# Ale Subgraph
 
 **NOTE: This subgraph is deprecated. The official ENS subgraph is maintained at [ensdomains/ens-subgraph](https://github.com/ensdomains/ens-subgraph).**
 
