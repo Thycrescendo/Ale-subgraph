@@ -8,7 +8,7 @@
     "create-local": "graph create graphprotocol/ale --node http://127.0.0.1:8020",
     "build": "graph build",
     "deploy-local": "graph deploy graphprotocol/ale --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020/",
-    "deploy": "graph deploy ensdomains/ale --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
+    "deploy": "graph deploy aledomains/ale --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "deploy-staging": "graph deploy davekaj/ale --ipfs https://api.staging.thegraph.com/ipfs/ --node https://api.staging.thegraph.com/deploy/",
     "watch-local": "graph deploy graphprotocol/ale --watch --debug --node http://127.0.0.1:8020/ --ipfs http://localhost:5001"
   },
